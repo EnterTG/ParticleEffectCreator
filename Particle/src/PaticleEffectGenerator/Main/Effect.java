@@ -1,4 +1,4 @@
-package Main;
+package PaticleEffectGenerator.Main;
 
 @FunctionalInterface
 public interface Effect {

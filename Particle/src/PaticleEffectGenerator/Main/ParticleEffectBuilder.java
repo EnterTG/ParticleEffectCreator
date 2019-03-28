@@ -1,4 +1,4 @@
-package Main;
+package PaticleEffectGenerator.Main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +35,16 @@ public class ParticleEffectBuilder {
 		return this;
 	}
 	
+	public ParticleEffectBuilder emitParticle(int amount,Vector offset,float force)
+	{
+		effects.add( e->
+		{
+				Location loc = e.location;
+				if(loc == null) System.out.println("Location in particle is null");
+				e.location.getWorld().spawnParticle(e.particle, loc.getX(), loc.getY(), loc.getZ(), amount);
+		});
+		return this;
+	}
 	public ParticleEffectBuilder emitParticle(int amount)
 	{
 		effects.add( e->
@@ -58,7 +68,13 @@ public class ParticleEffectBuilder {
 	}
 	public ParticleEffectBuilder addVector(Vector v)
 	{
-		effects.add( e->e.location.add(v));
+		System.out.println("Test: " + v);
+		effects.add(
+				e->
+				e.
+				location
+				.add(v)
+				);
 		return this;
 	}
 	

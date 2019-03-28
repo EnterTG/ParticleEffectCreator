@@ -1,4 +1,4 @@
-package Main;
+package PaticleEffectGenerator.Main;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -17,6 +17,8 @@ public class ParticleEffect implements Runnable{
 		this.location = location;
 		this.particle = particle;
 		if(location != null)this.sourceLoaction = location.clone();
+		if(player != null) this.sourceLoaction = player.getLocation().clone();
+		if(location == null && player != null) location = player.getLocation().clone();
 		this.player = player;
 	}
 	private final List<Effect> effects;
@@ -41,6 +43,7 @@ public class ParticleEffect implements Runnable{
 	@Override
 	public void run()
 	{
+		System.out.println(toString());
 		effects.forEach(e -> e.execute(this));
 	}
 	
@@ -54,7 +57,7 @@ public class ParticleEffect implements Runnable{
 	}
 	public ParticleEffect copy(Player p)
 	{
-		return new ParticleEffect(effects,location,particle,p);
+		return new ParticleEffect(effects,p.getLocation(),particle,p);
 	}
 	public ParticleEffect copy(Location loc,Player p)
 	{

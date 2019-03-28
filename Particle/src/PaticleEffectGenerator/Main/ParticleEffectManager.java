@@ -1,4 +1,4 @@
-package Main;
+package PaticleEffectGenerator.Main;
 
 import java.util.HashMap;
 

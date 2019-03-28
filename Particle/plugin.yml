@@ -1,0 +1,6 @@
+version: 0.1
+name: ParticleEffectCreator
+main: PaticleEffectGenerator.Main.Core
+api-version: 1.13
+commands:
+  test:
